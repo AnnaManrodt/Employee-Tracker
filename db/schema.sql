@@ -34,24 +34,6 @@ CREATE TABLE employee (
 
 );
 
-INSERT INTO department(id, name)
-VALUES 
-    (001, 'Sales'),
-    (002, 'Customer Service'),
-    (003, 'IT');
-
-    INSERT INTO role(title, salary, department_id)
-VALUES 
-    ('salesman', 50000, 1),
-    ('cust rep', 20000, 2),
-    ('tech guy', 70000, 3);
-
-    VALUES 
-(001, 'shane', 'thompson', '1', '1'),
-(002, 'chipper', 'dipper', '2', '2'),
-(003, 'benton', 'thompson', '3', '3');
-
-SELECT * FROM role;
 
     -- SELECT empolyee.id, empolyee.first_name, empolyees.last_name, role.title, department.name AS Department, role.salary, manager.last_name
     -- FROM employee

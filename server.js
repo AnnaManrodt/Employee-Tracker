@@ -26,19 +26,25 @@ function showMainMenu(departmentNames) {
         .then(response => {
             switch (response.userChoice) {
                 case 'View all departments':
-                    viewDepartments().then(data, ()=>{
-                        console.log(data)
+                    viewDepartments().then(data => {
+                        console.log(data);
+                    }).catch(error => {
+                        console.error(error);
                     });
                     break;
                 case 'View all employees':
-                    viewAllEmpolyees().then(data, ()=>{
-                        console.log(data)
-                    });
+                    viewAllEmpolyees().then(data => {
+                        console.log(data);
+                    }).catch(error => {
+                        console.error(error);
+                    });;
                     break;
                     case 'View all roles':
-                    viewAllRoles().then(data, ()=>{
-                        console.log(data)
-                    });
+                    viewAllRoles().then(data => {
+                        console.log(data);
+                    }).catch(error => {
+                        console.error(error);
+                    });;
                     break;
                 case 'Add a department':
                     addDepartment();
