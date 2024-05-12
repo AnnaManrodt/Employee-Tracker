@@ -33,19 +33,19 @@ CREATE TABLE employee (
     CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES role(id)
 
 );
+-- joins departments and role
 
+SELECT * FROM department d
+INNER JOIN "role" r ON
+r.department_id = d.id 
 
-    -- SELECT empolyee.id, empolyee.first_name, empolyees.last_name, role.title, department.name AS Department, role.salary, manager.last_name
-    -- FROM employee
-    -- JOIN role ON employee.role_id = role.id
-    -- JOIN department ON department.id = role.department_id
-    -- JOIN employee AS manager ON employee.manager_id = manager.id
+-- joins role and employee
+SELECT * FROM role r
+INNER JOIN "employee" e ON
+e.role_id = r.id
 
+-- joins employee on its self for manger id 
+SELECT * FROM employee e
+INNER JOIN "employee" et ON
+e.manager_id = et.id
 
--- hint- 1 We want to combine manger.frist_name = " " manger.last_name  
--- hint 2 look
-
---  up sql method that is contcatnation 
-
-    --  make a bunhc of joins 
-    -- join employee and roles 

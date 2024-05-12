@@ -211,28 +211,8 @@ const addEmployee = () => {
 //         name: "Role_name"
 //     },
 
-// ])
-//     .then(response => {
-//         let employeeFirstName = response.employeeFirstName;
-//         let employeeLastName = response.employeeLastName;
-//         let role_id = response.role_id;
-//         let manager_id = response.manager_id;
 
-//         pool.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ($1, $2, $3, $4)', [employeeFirstName, employeeLastName, role_id, manager_id], (err, result) => {
-//             if (err) {
-//                 console.error('Error executing query', err);
-//                 // Handle error response if needed
-//             } else {
-//                 console.log('Employee added successfully');
-//                 // Handle success response if needed
-//             }
-//         });
-//     });
-
-
-// addEmployee();
-
-//doesnt work yet
+//should update employee
 const updateEmployeeRole = () => {
     inquirer.prompt([
         {
@@ -272,6 +252,8 @@ const updateEmployeeRole = () => {
         });
     });
 }
+
+
 
 
 module.exports = { viewDepartments, viewAllRoles, addDepartment, viewAllEmpolyees, addARole, addEmployee, updateEmployeeRole };

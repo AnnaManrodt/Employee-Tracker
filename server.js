@@ -25,6 +25,7 @@ function showMainMenu(departmentNames) {
         ])
         .then(response => {
             switch (response.userChoice) {
+                //handles each case based off of what is chosen above 
                 case 'View all departments':
                     viewDepartments().then(data => {
                         console.log(data);
