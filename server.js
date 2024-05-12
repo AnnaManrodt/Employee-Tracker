@@ -1,34 +1,7 @@
 //use inquire to ask questions 
 const { Pool } = require('pg');
 const inquirer = require('inquirer');
-const { viewDepartments, veiwAllRoles, addDepartment, viewAllEmpolyee, addARole, addEmployee, updateEmployeeRole } = require('./functions/functions');
-
-const pool = new Pool({
-    user: 'postgres',
-    password: '060801',
-    host: 'localhost',
-    database: 'employee_db'
-});
-
-pool.connect((err) => {
-    if (err) {
-        console.error('Error connecting to database', err);
-        return;
-    }
-    console.log(`Connected to the employee_db database.`);
-    getDepartmentNames();
-});
-
-function getDepartmentNames() {
-    pool.query('SELECT * FROM department', (err, res) => {
-        if (err) {
-            console.error('Error executing query', err);
-            return;
-        }
-        const departmentNames = res.rows.map(row => row.name);
-        showMainMenu(departmentNames);
-    });
-}
+const { viewDepartments, viewAllRoles, addDepartment, viewAllEmpolyees, addARole, addEmployee, updateEmployeeRole} = require('./functions/functions');
 
 function showMainMenu(departmentNames) {
     inquirer
@@ -53,13 +26,19 @@ function showMainMenu(departmentNames) {
         .then(response => {
             switch (response.userChoice) {
                 case 'View all departments':
-                    viewDepartments();
+                    viewDepartments().then(data, ()=>{
+                        console.log(data)
+                    });
                     break;
                 case 'View all employees':
-                    viewAllEmpolyee();
+                    viewAllEmpolyees().then(data, ()=>{
+                        console.log(data)
+                    });
                     break;
-                    case 'View all Rolls':
-                    viewAllRolls();
+                    case 'View all roles':
+                    viewAllRoles().then(data, ()=>{
+                        console.log(data)
+                    });
                     break;
                 case 'Add a department':
                     addDepartment();
@@ -83,7 +62,7 @@ function showMainMenu(departmentNames) {
         });
 }
 
-
+showMainMenu();
 
 //update is === put so use the pool
 
